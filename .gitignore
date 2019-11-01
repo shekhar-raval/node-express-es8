@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+
+#dist folder
+/dist
+
+# Environment variables
+.env
+
+# Optional npm cache directory
+.npm
+
+# nyc test coverage
+.nyc_output
+
+# Documentation
+docs
+
+# Optional REPL history
+.node_repl_history
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files and Folders
+.DS_Store
+Thumbs.db
+/.history

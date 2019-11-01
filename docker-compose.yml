@@ -1,0 +1,21 @@
+version: "3"
+services:
+  node-boilerplate:
+    build: .
+    command: npm run start
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/node-es8-boilerplate
+    volumes:
+      - .:/app
+    ports:
+      - "80:8000"
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
