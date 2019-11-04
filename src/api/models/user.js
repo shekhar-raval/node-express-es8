@@ -13,6 +13,10 @@ const {
 } = require('../../utils/constants');
 const { saltRound, jwtExpirationInterval, jwtSecret } = require('../../config/env-vars');
 
+/**
+ * User Schema
+ * @private
+ */
 const UserModel = new Schema({
   email: {
     type: String,
@@ -46,6 +50,12 @@ const UserModel = new Schema({
   },
 }, { timestamps: true });
 
+/**
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
+ */
 UserModel.pre('save', async function save(next) {
   try {
     if (!this.isModified('password')) return next();
@@ -57,6 +67,9 @@ UserModel.pre('save', async function save(next) {
   }
 });
 
+/**
+ * User Model Methods
+ */
 UserModel.method({
   transform() {
     const transformed = {};
@@ -79,7 +92,17 @@ UserModel.method({
   },
 });
 
+/**
+ * Statics
+ */
 UserModel.statics = {
+
+  /**
+   * Get user
+   *
+   * @param {ObjectId} id - The objectId of user.
+   * @returns {Promise<User, APIError>}
+   */
   async get(id) {
     if (!Types.ObjectId.isValid(id)) {
       throw new APIError({
@@ -97,6 +120,14 @@ UserModel.statics = {
     return user;
   },
 
+  /**
+   * Find user by email and tries to generate a JWT token
+   *
+   * @param {Object} options - User Object
+   * @param options.email - User Email
+   * @param options.password - User password
+   * @returns { Promise<User | APIError> }
+   */
   async ValidateUserAndGenerateToken(options) {
     const { email, password } = options;
     const user = await this.findOne({ email }).exec();
@@ -109,6 +140,13 @@ UserModel.statics = {
     return { user: user.transform(), accessToken: user.token() };
   },
 
+  /**
+   * Return Validation Error
+   * If error is a mongoose duplication key error
+   *
+   * @param {Error} error
+   * @returns { Error | APIError }
+   */
   checkDuplication(error) {
     if (error.code === 11000 && (error.name === 'BulkWriteError' || error.name === 'MongoError')) {
       const keys = Object.keys(error.keyPattern);
@@ -123,4 +161,7 @@ UserModel.statics = {
   },
 };
 
+/**
+ * @typedef User
+ */
 module.exports = model('users', UserModel);
