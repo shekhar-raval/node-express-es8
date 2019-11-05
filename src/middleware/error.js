@@ -17,11 +17,12 @@ const Handler = (err, req, res, next) => {
     stack: err.stack,
   };
   if (env === 'production') delete response.stack;
-  res.status(err.status).json(response);
+  res.status(response.code).json(response);
   res.end();
 };
 
 exports.ErrorHandler = Handler;
+exports.Handler = Handler;
 
 /**
  * Convert Error Thrown By Express Validator OR Not an Instance of API Error

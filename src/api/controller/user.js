@@ -3,7 +3,7 @@ const {
   UpdateUser, RemoveUser,
   ReplaceUser,
 } = require('../service/user');
-const { ErrorHandler } = require('../../middleware/error');
+const { Handler } = require('../../middleware/error');
 const { CREATED } = require('../../utils/constants');
 
 /**
@@ -16,7 +16,7 @@ exports.load = async (req, res, next, id) => {
     req.locals = { user };
     return next();
   } catch (error) {
-    return ErrorHandler(error, req, res);
+    return Handler(error, req, res, next);
   }
 };
 

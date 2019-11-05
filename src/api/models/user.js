@@ -9,6 +9,7 @@ const {
   NO_RECORD_FOUND, NOT_FOUND,
   BAD_REQUEST, VALIDATION_ERROR,
   INVALID_CREDENTIALS,
+  UNAUTHORIZED,
   EMAIL_EXIST,
 } = require('../../utils/constants');
 const { saltRound, jwtExpirationInterval, jwtSecret } = require('../../config/env-vars');
@@ -42,7 +43,7 @@ const UserModel = new Schema({
   password: {
     type: String,
     required: true,
-    minlength: 8,
+    minlength: 6,
   },
   active: {
     type: Boolean,
@@ -132,10 +133,10 @@ UserModel.statics = {
     const { email, password } = options;
     const user = await this.findOne({ email }).exec();
     if (!user) {
-      throw new APIError({ message: NO_RECORD_FOUND, status: NOT_FOUND });
+      throw new APIError({ message: NO_RECORD_FOUND, status: UNAUTHORIZED });
     }
     if (!await user.matchPassword(password)) {
-      throw new APIError({ message: INVALID_CREDENTIALS, status: BAD_REQUEST });
+      throw new APIError({ message: INVALID_CREDENTIALS, status: UNAUTHORIZED });
     }
     return { user: user.transform(), accessToken: user.token() };
   },
@@ -154,7 +155,15 @@ UserModel.statics = {
         return new APIError({ message: 'Name already exist', status: NOT_FOUND });
       }
       if (keys.includes('email')) {
-        return new APIError({ message: EMAIL_EXIST, status: NOT_FOUND });
+        return new APIError({
+          message: EMAIL_EXIST,
+          status: BAD_REQUEST,
+          errors: [{
+            field: 'email',
+            location: 'body',
+            messages: 'Email is already in use',
+          }],
+        });
       }
     }
     return error;

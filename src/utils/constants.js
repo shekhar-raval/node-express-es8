@@ -33,5 +33,5 @@ module.exports = {
   NO_RECORD_FOUND: 'No record found for given details',
   VALIDATION_ERROR: 'Validation Error',
   INVALID_CREDENTIALS: 'Invalid Credentials, Please check and try again',
-  EMAIL_EXIST: 'Email is in use by another account',
+  EMAIL_EXIST: 'Email is already in use by another account',
 };

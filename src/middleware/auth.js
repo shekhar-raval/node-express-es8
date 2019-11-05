@@ -1,4 +1,4 @@
-const { authenticate } = require('passport');
+const passport = require('passport');
 const {
   ROLES, UNAUTHORIZED, LOGGED_IN, FORBIDDEN,
 } = require('../utils/constants');
@@ -30,6 +30,6 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
   return next();
 };
 
-exports.Authorize = (roles = ROLES) => (req, res, next) => authenticate('jwt',
+exports.Authorize = (roles = ROLES) => (req, res, next) => passport.authenticate('jwt',
   { session: false },
   handleJWT(req, res, next, roles))(req, res, next);
