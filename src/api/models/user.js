@@ -13,6 +13,10 @@ const {
 } = require('../../utils/constants');
 const { saltRound, jwtExpirationInterval, jwtSecret } = require('../../config/env-vars');
 
+/**
+ * User Schema
+ * @private
+ */
 const UserModel = new Schema({
   email: {
     type: String,
@@ -47,12 +51,11 @@ const UserModel = new Schema({
 }, { timestamps: true });
 
 /**
- * Add Your Own Hooks Here
- * - pre save hooks
- * - Virtuals
- * - Validations
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
  */
-
 UserModel.pre('save', async function save(next) {
   try {
     if (!this.isModified('password')) return next();
@@ -65,9 +68,8 @@ UserModel.pre('save', async function save(next) {
 });
 
 /**
- * Custom Modal Methods
+ * User Model Methods
  */
-
 UserModel.method({
   transform() {
     const transformed = {};
@@ -93,12 +95,12 @@ UserModel.method({
 /**
  * Statics
  */
-
 UserModel.statics = {
 
   /**
-   * Get user by ID
-   * @param {ObjectId} id ObjectId of the user
+   * Get user
+   *
+   * @param {ObjectId} id - The objectId of user.
    * @returns {Promise<User, APIError>}
    */
   async get(id) {
@@ -119,11 +121,12 @@ UserModel.statics = {
   },
 
   /**
-   * Find user by email and try to Generate JWT Token
-   * @param {Object} options
-   * @param options.email User Email
-   * @param options.password User Password
-   * @returns {Promise<User, APIError>}
+   * Find user by email and tries to generate a JWT token
+   *
+   * @param {Object} options - User Object
+   * @param options.email - User Email
+   * @param options.password - User password
+   * @returns { Promise<User | APIError> }
    */
   async ValidateUserAndGenerateToken(options) {
     const { email, password } = options;
@@ -138,10 +141,11 @@ UserModel.statics = {
   },
 
   /**
-   * Returns new Validation error
-   * If error is a mongoose Duplicate Key Error
+   * Return Validation Error
+   * If error is a mongoose duplication key error
+   *
    * @param {Error} error
-   * @returns {Error | APIError}
+   * @returns { Error | APIError }
    */
   checkDuplication(error) {
     if (error.code === 11000 && (error.name === 'BulkWriteError' || error.name === 'MongoError')) {
