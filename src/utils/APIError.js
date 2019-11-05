@@ -3,10 +3,10 @@ const { INTERNAL_SERVER_ERROR } = require('./constants');
 class APIError extends Error {
   /**
     * Creates an API error.
-    * @param {string} message - Error message.
+    * @param {String} message - Error message.
     * @param {Array} errors - Array of validation fields Errors.
-    * @param {number} status - HTTP status code of error.
-    * @param {boolean} isPublic - Whether the message should be visible to user or not.
+    * @param {Number} status - HTTP status code of error.
+    * @param {Boolean} isPublic - Whether the message should be visible to user or not.
     */
   constructor({
     message,

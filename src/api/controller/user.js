@@ -30,7 +30,7 @@ exports.get = (req, res) => res.json(req.locals.user.transform());
  * Get logged in user info
  * @public
  */
-exports.loggedIn = (req, res) => res.json(req.user.transform());
+exports.loggedIn = (req, res) => res.json({ data: req.user.transform(), success: 'SUCCESS' });
 
 /**
  * Create new user
@@ -39,7 +39,7 @@ exports.loggedIn = (req, res) => res.json(req.user.transform());
 exports.create = async (req, res, next) => {
   try {
     const response = await CreateUser(req.body);
-    return res.status(CREATED).json(response);
+    return res.status(CREATED).json({ data: response, success: 'SUCCESS' });
   } catch (error) {
     return next(error);
   }
@@ -53,7 +53,7 @@ exports.update = async (req, res, next) => {
   try {
     const { user } = req.locals;
     const response = await UpdateUser(user, req.body);
-    return res.json(response);
+    return res.json({ data: response, success: 'SUCCESS' });
   } catch (error) {
     return next(error);
   }
@@ -67,7 +67,7 @@ exports.replace = async (req, res, next) => {
   try {
     const { user } = req.locals;
     const response = await ReplaceUser(user, req.body);
-    return res.json(response);
+    return res.json({ data: response, success: 'SUCCESS' });
   } catch (error) {
     return next(error);
   }
