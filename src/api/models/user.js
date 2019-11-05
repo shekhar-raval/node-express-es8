@@ -46,6 +46,13 @@ const UserModel = new Schema({
   },
 }, { timestamps: true });
 
+/**
+ * Add Your Own Hooks Here
+ * - pre save hooks
+ * - Virtuals
+ * - Validations
+ */
+
 UserModel.pre('save', async function save(next) {
   try {
     if (!this.isModified('password')) return next();
@@ -56,6 +63,10 @@ UserModel.pre('save', async function save(next) {
     return next(err);
   }
 });
+
+/**
+ * Custom Modal Methods
+ */
 
 UserModel.method({
   transform() {
@@ -79,7 +90,17 @@ UserModel.method({
   },
 });
 
+/**
+ * Statics
+ */
+
 UserModel.statics = {
+
+  /**
+   * Get user by ID
+   * @param {ObjectId} id ObjectId of the user
+   * @returns {Promise<User, APIError>}
+   */
   async get(id) {
     if (!Types.ObjectId.isValid(id)) {
       throw new APIError({
@@ -97,6 +118,13 @@ UserModel.statics = {
     return user;
   },
 
+  /**
+   * Find user by email and try to Generate JWT Token
+   * @param {Object} options
+   * @param options.email User Email
+   * @param options.password User Password
+   * @returns {Promise<User, APIError>}
+   */
   async ValidateUserAndGenerateToken(options) {
     const { email, password } = options;
     const user = await this.findOne({ email }).exec();
@@ -109,6 +137,12 @@ UserModel.statics = {
     return { user: user.transform(), accessToken: user.token() };
   },
 
+  /**
+   * Returns new Validation error
+   * If error is a mongoose Duplicate Key Error
+   * @param {Error} error
+   * @returns {Error | APIError}
+   */
   checkDuplication(error) {
     if (error.code === 11000 && (error.name === 'BulkWriteError' || error.name === 'MongoError')) {
       const keys = Object.keys(error.keyPattern);
@@ -123,4 +157,7 @@ UserModel.statics = {
   },
 };
 
+/**
+ * @typedef User
+ */
 module.exports = model('users', UserModel);

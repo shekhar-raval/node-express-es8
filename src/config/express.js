@@ -53,7 +53,10 @@ app.use(rateLimiter());
 app.use(passport.initialize());
 passport.use('jwt', Jwt);
 
-// Mounting Routing
+// Get API Documentation
+app.use('/docs', express.static('docs'));
+
+// Mounting api routing
 app.use('/api/v1', require('../api/routes'));
 
 // If error is not an instanceOf APIError, convert it.
