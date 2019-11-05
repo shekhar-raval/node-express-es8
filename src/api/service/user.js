@@ -10,6 +10,13 @@ exports.LoginUser = (req, res) => res.json(req.user.transform());
 /**
  * Create User
  * @public
+ *
+ * @param {Object} userData userData
+ * @param {String} userData.email User's Email
+ * @param {String} userData.password User's Password
+ * @param {String} userData.name User's Name
+ *
+ * @returns {User} Created User Object
  */
 exports.CreateUser = async (userData) => {
   try {
@@ -24,12 +31,20 @@ exports.CreateUser = async (userData) => {
 /**
  * Get User By ID
  * @public
+ *
+ * @param {ObjectId} id mongoose Object id of user
+ * @returns {Promise<User>} user data
  */
 exports.Get = async (id) => User.get(id);
 
 /**
  * Update Existing User
  * @public
+ *
+ * @param {Object} user User Data (Old)
+ * @param {Object} newData User Data (new)
+ *
+ * @returns {User} Updated user data
  */
 exports.UpdateUser = async (user, newData) => {
   try {
@@ -45,6 +60,11 @@ exports.UpdateUser = async (user, newData) => {
 /**
  * Replace existing user
  * @public
+ *
+ * @param {Object} user User Data (Old)
+ * @param {Object} newUserData User Data (New)
+ *
+ * @returns {User} Replaced user data
  */
 exports.ReplaceUser = async (user, newUserData) => {
   try {
@@ -61,4 +81,10 @@ exports.ReplaceUser = async (user, newUserData) => {
   }
 };
 
+/**
+ * Remove User
+ * @public
+ *
+ * @param {Object} user User to be Removed
+ */
 exports.RemoveUser = async (user) => user.remove();
