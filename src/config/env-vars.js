@@ -21,6 +21,6 @@ module.exports = {
   },
   rateLimitTime: process.env.RATE_LIMIT_TIME,
   rateLimitRequest: process.env.RATE_LIMIT_REQUEST,
-  saltRound: process.env.NODE_ENV === 'development' ? process.env.SALT_ROUND_DEV : process.env.SALT_ROUND_PROD,
+  saltRound: process.env.NODE_ENV === 'development' ? 5 : 10,
   logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
 };

@@ -12,7 +12,7 @@
     "precommit": "npm run lint && npm run test",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "lint": "eslint '**/*.js' --ignore-pattern node_modules/",
+    "lint": "eslint '**/*.js' --ignore-pattern internals/scripts --ignore-path .gitignore",
     "lint:fix": "npm run lint --fix",
     "lint:watch": "npm run lint --watch",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 20000 --exit --recursive tests/",
@@ -29,7 +29,7 @@
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"
   },
   "author": "Raval Shekhar",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "express",
     "node",
@@ -52,7 +52,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": "npm test"
+      "pre-push": "npm run lint"
     }
   },
   "dependencies": {
