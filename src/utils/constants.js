@@ -25,6 +25,7 @@ module.exports = {
   // API Defaults
   ROLES: ['user', 'admin'],
   ADMIN: 'admin',
+  LOGGED_IN: 'logged_in',
   USER: 'user',
   DEFAULT_IMAGE: 'default.jpg',
 

@@ -1,6 +1,6 @@
 const { authenticate } = require('passport');
 const {
-  ROLES, UNAUTHORIZED, ADMIN, FORBIDDEN,
+  ROLES, UNAUTHORIZED, LOGGED_IN, FORBIDDEN,
 } = require('../utils/constants');
 const APIError = require('../utils/APIError');
 
@@ -13,7 +13,7 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
     stack: error ? error.stack : undefined,
   });
 
-  if (roles === ADMIN) {
+  if (roles === LOGGED_IN) {
     if (user.role !== 'admin' && req.params.userId !== user._id.toString()) {
       apiError.status = FORBIDDEN;
       apiError.message = 'Forbidden';
