@@ -8,8 +8,8 @@ const JwtOptions = {
 };
 
 /**
- * Returns user data if valid Token provided
- * Returns Error if invalid data provided
+ * Returns Callback function with user data if valid Token provided
+ * Returns Callback function with Error if invalid data provided
  *
  * @param {Object} payload
  * @param {String} payload.sub _id of user
