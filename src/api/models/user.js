@@ -133,7 +133,7 @@ UserModel.statics = {
     const { email, password } = options;
     const user = await this.findOne({ email }).exec();
     if (!user) {
-      throw new APIError({ message: NO_RECORD_FOUND, status: UNAUTHORIZED });
+      throw new APIError({ message: INVALID_CREDENTIALS, status: UNAUTHORIZED });
     }
     if (!await user.matchPassword(password)) {
       throw new APIError({ message: INVALID_CREDENTIALS, status: UNAUTHORIZED });

@@ -38,4 +38,4 @@ server.on('error', onError);
  * Exports Express
  * @public
  */
-module.exports = app;
+module.exports = server;

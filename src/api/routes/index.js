@@ -7,6 +7,11 @@ const app = express.Router();
  */
 app.use('/docs', express.static('docs'));
 
+/**
+ * GET v1/coverage
+ */
+app.use('/coverage', express.static('docs'));
+
 app.use('/auth', require('./auth'));
 
 app.use('/users', require('./user'));
