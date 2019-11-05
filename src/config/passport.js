@@ -7,6 +7,16 @@ const JwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
 };
 
+/**
+ * Returns user data if valid Token provided
+ * Returns Error if invalid data provided
+ *
+ * @param {Object} payload
+ * @param {String} payload.sub _id of user
+ * @param {Function} done Callback Functiom
+ *
+ * @returns {Function} done
+ */
 const JWT = async (payload, done) => {
   try {
     const user = await User.findById(payload.sub);
