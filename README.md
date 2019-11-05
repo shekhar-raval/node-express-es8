@@ -1,15 +1,16 @@
-# Node.js - Express, MongoDB, ES2020 REST API Boilerplate
+# Node.js - Express, MongoDB, ES8 REST API Boilerplate
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Build Status](https://travis-ci.org/ridhamtarpara/express-es8-rest-boilerplate.svg?branch=master)](https://travis-ci.org/ridhamtarpara/express-es8-rest-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/ridhamtarpara/express-es8-rest-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/ridhamtarpara/express-es8-rest-boilerplate?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ridhamtarpara/express-es8-rest-boilerplate.svg)](https://greenkeeper.io/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Build Status](https://travis-ci.org/ridhamtarpara/express-es8-rest-boilerplate.svg?branch=master)](https://travis-ci.org/ridhamtarpara/express-es8-rest-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/ridhamtarpara/express-es8-rest-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/ridhamtarpara/express-es8-rest-boilerplate?branch=master)
 
 
 ## Features
- - Uses [yarn](https://yarnpkg.com)
+ - Uses [npm](https://npmjs.com)
  - No transpilers, just vanilla javascript with ES2017 latest features like Async/Await
  - Express + MongoDB ([Mongoose](http://mongoosejs.com/))
  - CORS enabled and uses [helmet](https://github.com/helmetjs/helmet) to set some HTTP headers for security
  - Load environment variables from .env files with [dotenv](https://github.com/rolodato/dotenv-safe)
  - Request validation with [joi](https://github.com/hapijs/joi)
+ - File upload with [express-fileupload](https://www.npmjs.com/package/express-fileupload)
  - Consistent coding styles with [editorconfig](http://editorconfig.org)
  - Gzip compression with [compression](https://github.com/expressjs/compression)
  - Linting with [eslint](http://eslint.org)
@@ -19,23 +20,23 @@
  - Logging with [morgan](https://github.com/expressjs/morgan)
  - Authentication and Authorization with [passport](http://passportjs.org)
  - Rate limiting with [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
- - API documentation generation with [apidoc](http://apidocjs.com)
+ - API documentation generation with [Apidoc](http://apidocjs.com)
  - [Docker](https://www.docker.com/) support
- - Continuous integration support with [travisCI](https://travis-ci.org)
  - Monitoring with [pm2](https://github.com/Unitech/pm2)
 
  > Take a demo at Link Soon Coming...
 
 ## Prerequisites
  - [Node v10.0+](https://nodejs.org/en/download/current/) or [Docker](https://www.docker.com/)
- - [npm v6.0+](https://yarnpkg.com/en/docs/install)
+
+- [npm v6.0+](https://www.npmjs.com)
 
 ## Getting Started
 
 1. Clone the repo and make it yours:
 
 ```bash
-git clone https://github.com/ridhamtarpara/express-es8-rest-boilerplate node-api
+git clone https://github.com/shekhar-raval/node-express-es8 node-api
 cd node-api
 rm -rf .git
 ```
@@ -43,7 +44,7 @@ rm -rf .git
 2. Install dependencies:
 
 ```bash
-yarn
+npm install
 ```
 
 3. Set environment variables:
@@ -55,52 +56,52 @@ cp .env.example .env
 ## Running Locally
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ## Running in Production
 
 ```bash
-yarn start
+npm run start
 ```
 
 ## Lint
 
 ```bash
 # lint code with ESLint
-yarn lint
+npm run lint
 
 # try to fix ESLint errors
-yarn lint:fix
+npm run lint:fix
 
 # lint and watch for changes
-yarn lint:watch
+npm run lint:watch
 ```
 
 ## Test
 
 ```bash
 # run all tests with Mocha
-yarn test
+npm run test
 
 # run unit tests
-yarn test:unit
+npm run test:unit
 
 # run integration tests
-yarn test:integration
+npm run test:integration
 
 # run all tests and watch for changes
-yarn test:watch
+npm run test:watch
 
 # open nyc test coverage reports
-yarn coverage
+npm run coverage
 ```
 
 ## Validate
 
 ```bash
 # run lint and tests
-yarn validate
+npm run validate
 ```
 
 ## Logs
@@ -114,48 +115,26 @@ pm2 logs
 
 ```bash
 # generate and open api documentation
-yarn docs
+npm run docs
 ```
 
 ## Docker
 
 ```bash
 # run container locally
-yarn docker:dev
+npm run docker:dev
 or
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 # run container in production
-yarn docker:prod
+npm run docker:prod
 or
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
 
 # run tests
-yarn docker:test
+npm run docker:test
 or
 docker-compose -f docker-compose.yml -f docker-compose.test.yml up
-```
-
-## Deploy
-
-Set your server ip:
-
-```bash
-DEPLOY_SERVER=127.0.0.1
-```
-
-Replace my Docker username with yours:
-
-```bash
-nano deploy.sh
-```
-
-Run deploy script:
-
-```bash
-yarn deploy
-or
-sh ./deploy.sh
 ```
 
 ## Rate Limit Configuration
