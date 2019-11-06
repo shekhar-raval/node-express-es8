@@ -57,7 +57,7 @@ passport.use('jwt', Jwt);
 app.use('/docs', express.static('docs'));
 
 // Get Code Coverage report
-app.use('/docs', express.static('coverage'));
+app.use('/coverage', express.static('coverage'));
 
 // Mounting api routing
 app.use('/api/v1', require('../api/routes'));

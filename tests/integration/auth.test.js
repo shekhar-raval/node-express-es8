@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const app = require('../../src/server');
 const User = require('../../src/api/models/user');
 
-describe('AUTHENTICATION APIS', () => {
+describe('AUTHENTICATION APIS', async () => {
   let dbUser;
   let user;
 
