@@ -24,7 +24,7 @@ exports.load = async (req, res, next, id) => {
  * Get user
  * @public
  */
-exports.get = (req, res) => res.json(req.locals.user.transform());
+exports.get = (req, res) => res.json({ data: req.locals.user.transform(), success: 'SUCCESS' });
 
 /**
  * Get logged in user info

@@ -110,10 +110,10 @@ UserModel.statics = {
         message: VALIDATION_ERROR,
         errors: [{
           field: 'id',
-          location: 'body or params',
+          location: 'params',
           messages: 'Please enter valid User ID',
         }],
-        status: BAD_REQUEST,
+        status: NOT_FOUND,
       });
     }
     const user = await this.findById(id).exec();

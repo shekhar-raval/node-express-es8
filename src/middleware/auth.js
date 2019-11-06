@@ -12,8 +12,9 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
     status: UNAUTHORIZED,
     stack: error ? error.stack : undefined,
   });
-
-  if (roles === LOGGED_IN) {
+  if (err || !user) {
+    return next(apiError);
+  } if (roles === LOGGED_IN) {
     if (user.role !== 'admin' && req.params.userId !== user._id.toString()) {
       apiError.status = FORBIDDEN;
       apiError.message = 'Forbidden';
@@ -23,7 +24,7 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
     apiError.status = FORBIDDEN;
     apiError.message = 'Forbidden';
     return next(apiError);
-  } else if (err || !user) return next(apiError);
+  }
 
   req.user = user;
 
