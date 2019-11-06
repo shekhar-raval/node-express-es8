@@ -77,7 +77,7 @@ exports.ReplaceUser = async (user, newUserData) => {
 
     return savedUser.transform();
   } catch (error) {
-    throw User.checkDuplicateEmail(error);
+    throw User.checkDuplication(error);
   }
 };
 
