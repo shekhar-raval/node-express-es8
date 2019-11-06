@@ -28,8 +28,8 @@ describe('AUTHENTICATION APIS', async () => {
       const res = await request(app).post('/api/v1/auth/register').send(user).expect(201);
       delete user.password;
       user.role = 'user';
-      expect(res.body.data).to.have.a.property('token');
-      expect(res.body.data).to.have.a.property('user');
+      expect(res.body.data).to.haveOwnProperty('token');
+      expect(res.body.data).to.haveOwnProperty('user');
       expect(res.body.data.user).to.include(user);
     });
 
