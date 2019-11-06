@@ -153,7 +153,6 @@ describe('AUTHENTICATION APIS', async () => {
         password: 'invalidPassword',
       };
       const res = await request(app).post('/api/v1/auth/login').send(invalidData).expect(401);
-      console.log('Invalid Credentials, Please check and try again');
       expect(res.body.message).to.equal('Invalid Credentials, Please check and try again');
       expect(res.body.code).to.equal(401);
       expect(res.body.errors).to.be.lengthOf(0);

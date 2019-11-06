@@ -191,4 +191,71 @@ describe('USERS APIS', async () => {
       expect(res.body.message).to.be.equal('Forbidden');
     });
   });
+
+  describe('PUT /v1/users/:userId', async () => {
+    it('should replace user', async () => {
+      delete dbUsers.shekhar.password;
+      const id = (await User.findOne({ email: dbUsers.shekhar.email }))._id;
+      const res = await request(app)
+        .put(`/api/v1/users/${id}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(200);
+      delete user.password;
+      expect(res.body.data).to.includes(user);
+      expect(res.body.data.role).to.be.equal('user');
+    });
+
+    it('should report error when email not provided', async () => {
+      delete user.email;
+      const id = (await User.findOne())._id;
+      const res = await request(app)
+        .put(`/api/v1/users/${id}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(400);
+      const { field, location, messages } = res.body.errors[0];
+      expect(field).to.be.equal('email');
+      expect(location).to.be.equal('body');
+      expect(messages).to.be.equal('email is required');
+    });
+
+    it('should report error when password length is less than 6', async () => {
+      user.password = '12445';
+      const id = (await User.findOne())._id;
+      const res = await request(app)
+        .put(`/api/v1/users/${id}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(400);
+      const { field, location, messages } = res.body.errors[0];
+      expect(field).to.be.equal('password');
+      expect(location).to.be.equal('body');
+      expect(messages).to.be.equal('password length must be at least 6 characters long');
+    });
+
+    it('should report an error when user does not exists', async () => {
+      const res = await request(app)
+        .put('/api/v1/users/56c787ccc67fc16ccc1a5e92')
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(404);
+      expect(res.body.code).to.be.equal(404);
+      expect(res.body.message).to.be.equal('No record found for given details');
+    });
+
+    it('should report an error when Id is not a valid Mongoose Id', async () => {
+      const res = await request(app)
+        .put('/api/v1/users/shekhar@123')
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(404);
+      expect(res.body.code).to.be.equal(404);
+      expect(res.body.message).to.be.equal('Validation Error');
+      const { field, location, messages } = res.body.errors[0];
+      expect(field).to.be.equal('id');
+      expect(location).to.be.equal('params');
+      expect(messages).to.be.equal('Please enter valid User ID');
+    });
+  });
 });
