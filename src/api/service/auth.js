@@ -6,6 +6,10 @@ const { jwtExpirationInterval } = require('../../config/env-vars');
 /**
  * Return Formated Object With Tokens
  * @private
+ *
+ * @param {Object} user
+ * @param {String} accessToken
+ * @returns {Object} {tokenType, accessToken, refreshToken, expiresIn}
  */
 const generateTokenResponse = (user, accessToken) => {
   const tokenType = 'Bearer';

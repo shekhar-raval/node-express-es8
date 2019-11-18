@@ -5,7 +5,7 @@
 ![node version](https://img.shields.io/badge/node-%3E=%2012.0.0-brightgreen.svg)
 [![express](https://img.shields.io/badge/express-4.17.1-orange.svg)](https://github.com/expressjs/express)
 [![mongoose](https://img.shields.io/badge/mongoose-5.7.7-red.svg)](https://mongoosejs.com/)
-[![jsonwebtoken](https://img.shields.io/badge/jsonwebtoken-8.4.0-green.svg)](https://github.com/auth0/node-jsonwebtoken)
+[![jsonwebtoken](https://img.shields.io/badge/jsonwebtoken-8.5.1-green.svg)](https://github.com/auth0/node-jsonwebtoken)
 [![LICENCE](https://img.shields.io/github/license/shekhar-raval/node-express-es8)](https://img.shields.io/github/license/shekhar-raval/node-express-es8)
 [![code style](https://img.shields.io/badge/eslint--config--standard-%5E12.0.0-blue.svg)](https://github.com/standard/eslint-config-standard)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
@@ -20,6 +20,7 @@
 - CORS enabled and uses [helmet](https://github.com/helmetjs/helmet) to set some HTTP headers for security
 - Load environment variables from .env files with [dotenv](https://github.com/rolodato/dotenv-safe)
 - Request validation with [joi](https://github.com/hapijs/joi)
+- Logging with winston [winston](https://github.com/winstonjs/winston)
 - File upload with [express-fileupload](https://www.npmjs.com/package/express-fileupload)
 - Consistent coding styles with [editorconfig](http://editorconfig.org)
 - Gzip compression with [compression](https://github.com/expressjs/compression)
