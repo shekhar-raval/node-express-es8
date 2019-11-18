@@ -1,5 +1,4 @@
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const path = require('path');
 const helmet = require('helmet');
@@ -26,9 +25,6 @@ app.use(morgan(logs));
 // Mount BodyParser middleware will append body of request to req.body
 app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10kb' }));
-
-// Mount Express-Fileupload (Multi-Part fileupload and Form Data)
-app.use(fileUpload());
 
 // Gzip Compression
 app.use(compress());
