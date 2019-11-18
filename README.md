@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/shekhar-raval/node-express-es8/badge.svg?branch=master)](https://coveralls.io/github/shekhar-raval/node-express-es8?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/shekhar-raval/node-express-es8/badge.svg?targetFile=package.json)](https://snyk.io/test/github/shekhar-raval/node-express-es8?targetFile=package.json)
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
+[![LICENCE](https://img.shields.io/github/license/shekhar-raval/node-express-es8)](https://img.shields.io/github/license/shekhar-raval/node-express-es8)
 # Node.js - Express, MongoDB, ES8 REST API Boilerplate
 
 ## Features
