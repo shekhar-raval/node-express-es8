@@ -1,0 +1,30 @@
+language: node_js
+node_js: '13'
+
+git:
+  depth: 3
+
+branches:
+  only:
+    - master
+
+services:
+  - mongodb
+
+env:
+  global:
+    - NODE_ENV=test
+    - PORT=8000
+    - JWT_SECRET=bA2xcjpf8y5aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCeBb8cpKauGefw5qy4
+    - JWT_EXPIRATION_MINUTES=15
+    - MONGO_URI=mongodb://shekhar:123456789@localhost:27017/express-es8
+    - MONGO_URI_TESTS=mongodb://shekhar:123456789@localhost:27017/express-es8
+    - RATE_LIMIT_TIME=1
+    - RATE_LIMIT_REQUEST=2000
+
+script: npm run validate
+
+before_script:
+  - mongo express-es8 --eval 'db.createUser({user:"shekhar",pwd:"123456789",roles:["readWrite"]});'
+
+after_success: npm run coverage

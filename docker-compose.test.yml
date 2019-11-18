@@ -1,0 +1,6 @@
+version: "2"
+services:
+  node-boilerplate:
+  environment:
+      - NODE_ENV=test
+    command: npm test

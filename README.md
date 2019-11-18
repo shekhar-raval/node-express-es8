@@ -101,13 +101,6 @@ npm run coverage
 npm run validate
 ```
 
-## Logs
-
-```bash
-# show logs in production
-pm2 logs
-```
-
 ## Documentation
 
 ```bash
@@ -118,11 +111,6 @@ npm run docs
 ## Docker
 
 ```bash
-# run container locally
-npm run docker:dev
-or
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
-
 # run container in production
 npm run docker:prod
 or
