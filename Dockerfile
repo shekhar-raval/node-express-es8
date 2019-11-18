@@ -8,7 +8,7 @@ COPY package*.json ./
 
 USER node
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
