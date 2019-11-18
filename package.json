@@ -23,7 +23,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "prestart": "npm run docs",
-    "validate": "npm lint && npm test",
+    "validate": "npm run lint && npm run test",
     "docker:prod": "docker-compose up --build",
     "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit",
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"
