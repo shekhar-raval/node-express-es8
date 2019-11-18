@@ -23,6 +23,5 @@ script: npm run docker:test
 
 before_script:
   - sleep 10
-  - mongo express-es8 --eval 'db.createUser({user:"shekhar",pwd:"123456789",roles:["readWrite"]});'
-
+  
 after_success: npm run coverage
