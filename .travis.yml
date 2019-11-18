@@ -22,7 +22,7 @@ env:
     - RATE_LIMIT_TIME=1
     - RATE_LIMIT_REQUEST=2000
 
-script: npm run validate
+script: npm run test
 
 before_script:
   - mongo express-es8 --eval 'db.createUser({user:"shekhar",pwd:"123456789",roles:["readWrite"]});'
