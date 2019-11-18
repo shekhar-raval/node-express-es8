@@ -107,7 +107,7 @@ app.route('/:userId')
    */
   .get(Authorize(LOGGED_IN), controller.get)
   /**
-   * @api {put} v1/users/:id Replace User
+   * @api {put} v1/users/:userId Replace User
    * @apiDescription Replace the whole user document with a new one
    * @apiVersion 1.0.0
    * @apiName ReplaceUser
@@ -135,7 +135,7 @@ app.route('/:userId')
    */
   .put(Authorize(LOGGED_IN), Validate(replaceUser), controller.replace)
   /**
-   * @api {put} v1/users/:id Update User
+   * @api {put} v1/users/userId Update User
    * @apiDescription Update some fields of a user document
    * @apiVersion 1.0.0
    * @apiName UpdateUser
@@ -163,7 +163,7 @@ app.route('/:userId')
    */
   .patch(Authorize(LOGGED_IN), Validate(updateUser), controller.update)
   /**
-   * @api {patch} v1/users/:id Delete User
+   * @api {patch} v1/users/userId Delete User
    * @apiDescription Delete a user
    * @apiVersion 1.0.0
    * @apiName DeleteUser
