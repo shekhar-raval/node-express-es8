@@ -8,9 +8,6 @@ branches:
   only:
     - master
 
-services:
-  - mongodb
-
 env:
   global:
     - NODE_ENV=test
