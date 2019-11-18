@@ -33,15 +33,15 @@ describe('AUTHENTICATION APIS', async () => {
       expect(res.body.data.user).to.include(user);
     });
 
-    it('Should report error when email already exists', async () => {
-      const res = await request(app).post('/api/v1/auth/register').send(dbUser).expect(400);
-      const { field, location, messages } = res.body.errors[0];
-      expect(res.body.code).to.equal(400);
-      expect(res.body.message).to.equal('Email is already in use by another account');
-      expect(field).to.be.equal('email');
-      expect(location).to.be.equal('body');
-      expect(messages).to.be.equal('Email is already in use');
-    });
+    // it('Should report error when email already exists', async () => {
+    //   const res = await request(app).post('/api/v1/auth/register').send(dbUser).expect(400);
+    //   const { field, location, messages } = res.body.errors[0];
+    //   expect(res.body.code).to.equal(400);
+    //   expect(res.body.message).to.equal('Email is already in use by another account');
+    //   expect(field).to.be.equal('email');
+    //   expect(location).to.be.equal('body');
+    //   expect(messages).to.be.equal('Email is already in use');
+    // });
 
     it('Should report validation error when fileds are invalid', async () => {
       const invalidData = {
