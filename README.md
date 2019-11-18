@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/shekhar-raval/node-express-es8.svg?branch=master)](https://travis-ci.org/shekhar-raval/node-express-es8)
+[![Known Vulnerabilities](https://snyk.io/test/github/shekhar-raval/node-express-es8/badge.svg?targetFile=package.json)](https://snyk.io/test/github/shekhar-raval/node-express-es8?targetFile=package.json)
 # Node.js - Express, MongoDB, ES8 REST API Boilerplate
 
 ## Features
