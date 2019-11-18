@@ -1,6 +1,13 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 
+const MorganProd = {
+  skip(req, res) {
+    return res.statusCode < 400;
+  },
+  stream: '../morgan.log',
+};
+
 module.exports = {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
@@ -24,4 +31,5 @@ module.exports = {
   saltRound: process.env.NODE_ENV === 'development' ? 5 : 10,
   logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
   Level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
+  morganConfig: process.env.NODE_ENV === 'production' ? MorganProd : {},
 };

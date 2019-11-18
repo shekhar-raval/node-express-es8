@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 const rateLimiter = require('../middleware/rateLimiter');
 
 const { ErrorHandler, ConvertError, NotFound } = require('../middleware/error');
-const { logs } = require('./env-vars');
+const { logs, morganConfig } = require('./env-vars');
 const { Jwt } = require('./passport');
 
 /**
@@ -20,7 +20,7 @@ const { Jwt } = require('./passport');
 const app = express();
 
 // request logging. dev: console | production: file
-app.use(morgan(logs));
+app.use(morgan(logs, morganConfig));
 
 // Mount BodyParser middleware will append body of request to req.body
 app.use(bodyParser.json({ limit: '10kb' }));
