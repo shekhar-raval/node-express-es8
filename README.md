@@ -1,4 +1,6 @@
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Build Status](https://travis-ci.org/shekhar-raval/node-express-es8.svg?branch=master)](https://travis-ci.org/shekhar-raval/node-express-es8)
+[![Coverage Status](https://coveralls.io/repos/github/shekhar-raval/node-express-es8/badge.svg?branch=master)](https://coveralls.io/github/shekhar-raval/node-express-es8?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/shekhar-raval/node-express-es8/badge.svg?targetFile=package.json)](https://snyk.io/test/github/shekhar-raval/node-express-es8?targetFile=package.json)
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 # Node.js - Express, MongoDB, ES8 REST API Boilerplate
