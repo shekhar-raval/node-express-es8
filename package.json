@@ -28,7 +28,6 @@
     "test:watch": "cross-env NODE_ENV=test nodemon --exec mocha -R min tests/integration",
     "docs": "apidoc -i src -o docs --silent",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "postcoverage": "opn coverage/lcov-report/index.html",
     "prestart": "npm run docs",
     "validate": "npm run lint && npm run test",
     "docker:prod": "docker-compose up --build",

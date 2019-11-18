@@ -13,6 +13,12 @@
 # nyc test coverage
 .nyc_output
 
+# Coverage 
+/coverage
+
+# Coveralls.yml
+.coveralls.yml
+
 # Documentation
 docs
 
