@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/shekhar-raval/node-express-es8.svg?branch=master)](https://travis-ci.org/shekhar-raval/node-express-es8)
+[![LICENCE](https://img.shields.io/github/license/shekhar-raval/node-express-es8)](https://img.shields.io/github/license/shekhar-raval/node-express-es8)
 # Node.js - Express, MongoDB, ES8 REST API Boilerplate
 
 ## Features
