@@ -1,12 +1,12 @@
 const path = require('path');
-const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const fs = require('fs');
 
 const MorganProd = {
   skip(req, res) {
     return res.statusCode <= 400;
   },
-  stream: fs.createWriteStream('../access.log', { flags: 'a' }),
+  stream: fs.createWriteStream(path.join(__dirname, '../../access.log'), { flags: 'a' }),
 };
 
 module.exports = {
