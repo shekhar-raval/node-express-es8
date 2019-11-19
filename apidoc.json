@@ -1,0 +1,10 @@
+{
+  "name": "Nodejs, Express, MongoDB Boilerplate Code",
+  "version": "1.0.0",
+  "description": "Api docs of NodeJS-REST-API-Boilerplate",
+  "title": "NodeJS-REST-API-Boilerplate",
+  "url": "http://localhost:8000/api",
+  "template": {
+    "forceLanguage": "en"
+  }
+}

@@ -1,12 +1,13 @@
 const multer = require('multer');
 const path = require('path');
 const APIError = require('./APIError');
+const { INVALID_FILE_TYPE } = require('./constants');
 
 const fileFilter = (req, file, cb) => {
   const type = (/\.(gif|jpg|jpeg|tiff|png)$/i).test(file.filename);
   if (!type) {
     const err = new APIError({
-      message: 'Invalid File type',
+      message: INVALID_FILE_TYPE,
       status: 400,
     });
     return cb(err, false);

@@ -26,7 +26,7 @@
     "test:unit": "cross-env NODE_ENV=test mocha tests/unit",
     "test:integration": "cross-env NODE_ENV=test mocha --exit --timeout 20000 tests/integration",
     "test:watch": "cross-env NODE_ENV=test nodemon --exec mocha -R min tests/integration",
-    "docs": "apidoc -i src -o docs --silent",
+    "docs": "apidoc -i src -o docs",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prestart": "npm run docs",
     "validate": "npm run lint && npm run test",
