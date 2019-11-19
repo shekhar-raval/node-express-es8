@@ -183,6 +183,6 @@ app.route('/:userId')
    */
   .delete(Authorize(LOGGED_IN), controller.remove);
 
-app.route('/upload').post(upload.single('profile'), controller.remove);
+app.route('/upload').post(upload.single('profile'), controller.upload);
 
 module.exports = app;

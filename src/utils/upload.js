@@ -3,7 +3,8 @@ const path = require('path');
 const APIError = require('./APIError');
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimeType !== 'image/leg') {
+  const type = (/\.(gif|jpg|jpeg|tiff|png)$/i).test(file.filename);
+  if (!type) {
     const err = new APIError({
       message: 'Invalid File type',
       status: 400,

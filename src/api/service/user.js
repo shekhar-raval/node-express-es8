@@ -88,3 +88,12 @@ exports.ReplaceUser = async (user, newUserData) => {
  * @param {Object} user User to be Removed
  */
 exports.RemoveUser = async (user) => user.remove();
+
+/**
+ * Upload Image to System
+ * @param {Req} file - File Object in Request
+ */
+exports.UploadFile = async (file) => {
+  const { path } = file;
+  return path;
+};

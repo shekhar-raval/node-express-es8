@@ -2,6 +2,7 @@ const {
   Get, CreateUser,
   UpdateUser, RemoveUser,
   ReplaceUser,
+  UploadFile,
 } = require('../service/user');
 const { Handler } = require('../../middleware/error');
 const { CREATED } = require('../../utils/constants');
@@ -82,6 +83,15 @@ exports.remove = async (req, res, next) => {
     const { user } = req.locals;
     await RemoveUser(user);
     res.status(203).end();
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.upload = async (req, res, next) => {
+  try {
+    const data = await UploadFile(req.file);
+    res.status(201).json(data);
   } catch (error) {
     next(error);
   }
