@@ -21,7 +21,7 @@
 - Load environment variables from .env files with [dotenv](https://github.com/rolodato/dotenv-safe)
 - Request validation with [joi](https://github.com/hapijs/joi)
 - Logging with winston [winston](https://github.com/winstonjs/winston)
-- File upload with [express-fileupload](https://www.npmjs.com/package/express-fileupload)
+- File upload with [multer](https://www.npmjs.com/package/multer)
 - Consistent coding styles with [editorconfig](http://editorconfig.org)
 - Gzip compression with [compression](https://github.com/expressjs/compression)
 - Linting with [eslint](http://eslint.org)

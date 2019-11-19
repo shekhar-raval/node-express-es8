@@ -1,10 +1,13 @@
 const app = require('express').Router();
 const Validate = require('express-validation');
 const controller = require('../controller/user');
+const upload = require('../../utils/upload');
+
 const { Authorize } = require('../../middleware/auth');
 const {
   listUsers, createUser, replaceUser, updateUser,
 } = require('../validations/user');
+
 const { ADMIN, LOGGED_IN } = require('../../utils/constants');
 
 /**
@@ -179,4 +182,7 @@ app.route('/:userId')
    * @apiError (Not Found 404)    NotFound      User does not exist
    */
   .delete(Authorize(LOGGED_IN), controller.remove);
+
+app.route('/upload').post(upload.single('profile'), controller.remove);
+
 module.exports = app;
