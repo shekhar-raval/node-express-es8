@@ -8,9 +8,6 @@
     "node": ">=10",
     "npm": ">=6"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/shekhar-raval/node-express-es8.git"
