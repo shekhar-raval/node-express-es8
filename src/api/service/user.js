@@ -51,7 +51,8 @@ exports.UpdateUser = async (user, newData) => {
     const role = user.role !== 'admin' ? 'role' : '';
     const userToUpdate = omit(newData, role);
     const updateData = Object.assign(user, userToUpdate);
-    return updateData;
+    const savedUser = await updateData.save();
+    return savedUser.transform();
   } catch (err) {
     throw User.checkDuplication(err);
   }

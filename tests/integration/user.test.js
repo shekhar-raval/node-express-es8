@@ -300,4 +300,35 @@ describe('USERS APIS', async () => {
       expect(res.body.data.role).to.be.equal('user');
     });
   });
+
+  describe('PATCH /v1/users/:userId', () => {
+    it('should update user', async () => {
+      delete user.password;
+      delete user.name;
+      user.role = 'user';
+      const id = (await User.findOne({ email: dbUsers.shekhar.email }))._id;
+      const res = await request(app)
+        .patch(`/api/v1/users/${id}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(200);
+      expect(res.body.data).to.includes(user);
+      expect(res.body.data.role).to.be.equal('user');
+    });
+
+    it('should report error when email trying to update already exists', async () => {
+      user.email = dbUsers.michal.email;
+      const id = (await User.findOne({ email: dbUsers.shekhar.email }))._id;
+      const res = await request(app)
+        .patch(`/api/v1/users/${id}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(user)
+        .expect(400);
+      const { field, location, messages } = res.body.errors[0];
+      expect(res.body.code).to.equal(400);
+      expect(field).to.equal('email');
+      expect(location).to.equal('body');
+      expect(messages).to.equal('Email is already in use');
+    });
+  });
 });

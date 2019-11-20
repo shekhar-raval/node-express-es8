@@ -15,7 +15,7 @@
 ## Features
 
 - Uses [npm](https://npmjs.com)
-- No transpilers, just vanilla javascript with ES2017 latest features like Async/Await
+- No transpilers, just vanilla javascript with ES2018 latest features like Async/Await
 - Express + MongoDB ([Mongoose](http://mongoosejs.com/))
 - CORS enabled and uses [helmet](https://github.com/helmetjs/helmet) to set some HTTP headers for security
 - Load environment variables from .env files with [dotenv](https://github.com/rolodato/dotenv-safe)
