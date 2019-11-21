@@ -33,4 +33,6 @@ module.exports = {
   logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
   Level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
   morganConfig: process.env.NODE_ENV === 'production' ? MorganProd : {},
+  redisPort: process.env.REDIS_PORT,
+  redisHost: process.env.REDIS_HOST,
 };

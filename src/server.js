@@ -3,6 +3,7 @@ const app = require('./config/express');
 const { env, port } = require('./config/env-vars');
 const { Connect } = require('./config/mongoose');
 const logger = require('./config/logger');
+const { RedisClient } = require('./config/redis');
 
 // Create Http Server
 const server = http.createServer(app);
@@ -11,6 +12,7 @@ server.listen(port);
 
 server.on('listening', () => {
   Connect();
+  RedisClient();
   logger.info(`${env.toUpperCase()} Server is Listening on PORT ${port}`);
 });
 
