@@ -22,10 +22,7 @@ const Format = format.combine(
 
 const transportArray = (
   env === 'production'
-    ? [
-      new transports.File({ filename: 'error.log', level: 'error' }),
-      new transports.File({ filename: 'error.log', level: 'error' }),
-    ]
+    ? [new transports.File({ filename: 'error.log', level: 'error' })]
     : [new transports.Console()]
 );
 

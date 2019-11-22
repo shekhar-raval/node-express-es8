@@ -11,16 +11,25 @@ services:
       - JWT_EXPIRATION_MINUTES=15
       - RATE_LIMIT_TIME=15
       - RATE_LIMIT_REQUEST=15
+      - REDIS_HOST=redisdb
+      - REDIS_PORT=6379
     volumes:
       - .:/app
     ports:
       - "80:8000"
     links:
       - mongodb
+      - redisdb
     depends_on:
       - mongodb
+      - redisdb
 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
+  
+  redisdb:
+    image: redis
+    ports:
+      - "6379:6379"

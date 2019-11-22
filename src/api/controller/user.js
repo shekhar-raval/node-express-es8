@@ -6,6 +6,7 @@ const {
 } = require('../service/user');
 const { Handler } = require('../../middleware/error');
 const { CREATED } = require('../../utils/constants');
+const { CreateCache, GetCache } = require('../../utils/cache');
 
 /**
  * Load user and append to req.
@@ -13,8 +14,14 @@ const { CREATED } = require('../../utils/constants');
  */
 exports.load = async (req, res, next, id) => {
   try {
+    const data = await GetCache(req.path, req.params);
+    if (data) {
+      req.locals = { data };
+      return next();
+    }
     const user = await Get(id);
     req.locals = { user };
+    await CreateCache(user, req.path, req.params);
     return next();
   } catch (error) {
     return Handler(error, req, res, next);

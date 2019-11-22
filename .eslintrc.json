@@ -5,7 +5,7 @@
     "mocha": true
   },
   "rules": {
-    "no-console": 0,
+    "no-console": 2,
     "no-underscore-dangle": 0,
     "no-unused-vars": [
       "error",
