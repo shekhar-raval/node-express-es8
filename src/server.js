@@ -42,4 +42,3 @@ server.on('error', onError);
  * @public
  */
 module.exports = server;
-exports.ErrorListener = onError;
